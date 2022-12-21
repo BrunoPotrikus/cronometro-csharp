@@ -16,8 +16,31 @@ class Program
 
         string data = Console.ReadLine().ToLower();
         char type = char.Parse(data.Substring((data.Length - 1), 1));
-        Console.WriteLine(data);
-        Console.WriteLine(type);
+        int time = int.Parse(data.Substring(0, (data.Length - 1)));
+        int multiplicador = 1;
+
+        if (type == 'm') multiplicador = 60;
+        if (time == 0) Environment.Exit(0);
+
+        PreStart(time * multiplicador);
+        
+    }
+
+    static void PreStart(int time)
+    {
+        Console.Clear();
+        Console.WriteLine("Ready...");
+        Thread.Sleep(1000);
+
+        Console.Clear();
+        Console.WriteLine("Set...");
+        Thread.Sleep(1000);
+
+        Console.Clear();
+        Console.WriteLine("GO!!!");
+        Thread.Sleep(2500);
+
+        Start(time);
     }
 
     static void Start(int time)
@@ -35,5 +58,6 @@ class Program
         Console.Clear();
         Console.WriteLine("Cronômetro finalizado.");
         Thread.Sleep(2500);
+        Menu();
     }
 }
